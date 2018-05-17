@@ -32,10 +32,10 @@ const runIt = (setFn, unsetFn, runName) => {
       ...faker.image.dataUri()
     };
 
-    setFn(obj, "testKey" + i, fillerObj);
+    setFn(obj, "testKey.ob" + i, fillerObj);
   }
   for (let i = 0; i < numCycles; i++) {
-    unsetFn(obj, "testKey" + i);
+    unsetFn(obj, "testKey.ob" + i);
   }
 
   const snapshot2 = profiler.takeSnapshot();
