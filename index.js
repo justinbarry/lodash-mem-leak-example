@@ -6,12 +6,7 @@ const lodash = require('lodash');
 const set = require('lodash.set');
 const unset = require('lodash.unset');
 
-
-const faker = require('faker')
-
 const runIt = (setFn, unsetFn, runName) => {
-  faker.seed(123);
-
   const snapshot1 = profiler.takeSnapshot();
   snapshot1.export(function(error, result) {
     fs.writeFileSync(`${runName}-1.heapsnapshot`, result);
@@ -19,22 +14,8 @@ const runIt = (setFn, unsetFn, runName) => {
   });
 
   const obj = {};
-
-  const numCycles = 10000;
-
-  for (let i = 0; i < numCycles; i++) {
-    let fillerObj = {
-      id: i,
-      ...faker.helpers.createCard(),
-      ...faker.helpers.userCard(),
-      ...faker.helpers.createTransaction(),
-      ...faker.image.image(),
-      ...faker.image.dataUri()
-    };
-
-    setFn(obj, "testKey.ob" + i, fillerObj);
-  }
-  for (let i = 0; i < numCycles; i++) {
+  for (let i = 0; i < 1000000; i++) {
+    setFn(obj, "testKey.ob" + i, {});
     unsetFn(obj, "testKey.ob" + i);
   }
 
