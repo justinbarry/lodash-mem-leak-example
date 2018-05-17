@@ -25,7 +25,11 @@ const runIt = (setFn, unsetFn, runName) => {
   for (let i = 0; i < numCycles; i++) {
     let fillerObj = {
       id: i,
-      ...faker.helpers.createCard()
+      ...faker.helpers.createCard(),
+      ...faker.helpers.userCard(),
+      ...faker.helpers.createTransaction(),
+      ...faker.image.image(),
+      ...faker.image.dataUri()
     };
 
     setFn(obj, "testKey" + i, fillerObj);
