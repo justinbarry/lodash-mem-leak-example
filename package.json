@@ -1,0 +1,17 @@
+{
+  "name": "lodash-mem-leak-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "lodash.set": "^4.3.2",
+    "lodash.unset": "^4.5.2",
+    "v8-profiler-node8": "^5.7.8"
+  }
+}
