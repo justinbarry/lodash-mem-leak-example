@@ -7,7 +7,11 @@ const set = require('lodash.set');
 const unset = require('lodash.unset');
 
 
+const faker = require('faker')
+
 const runIt = (setFn, unsetFn, runName) => {
+  faker.seed(123);
+
   const snapshot1 = profiler.takeSnapshot();
   snapshot1.export(function(error, result) {
     fs.writeFileSync(`${runName}-1.heapsnapshot`, result);
@@ -21,6 +25,7 @@ const runIt = (setFn, unsetFn, runName) => {
   for (let i = 0; i < numCycles; i++) {
     let fillerObj = {
       id: i,
+      ...faker.helpers.createCard()
     };
 
     setFn(obj, "testKey" + i, fillerObj);
